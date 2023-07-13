@@ -1,8 +1,7 @@
 # Sorted Delegates
-Sorted Delegates enable you to manage delegates and callbacks in specific orders
-instead of the default behaviour which is the subscription order and is often unreliable.
-While relying on a specific order of execution is generally discouraged in code design,
-this code may help to address situations where such a requirement arises and no other suitable alternatives are available online.
+Sorted Delegates is a helpful tool that empowers you to manage delegates and callbacks with precision, unlike the default behavior that can sometimes be as reliable as a spinning roulette wheel. We all know that relying on a specific order of execution is generally discouraged in code design, but hey, life has its unpredictable moments. So, when you find yourself in a situation where you need that order to be just right and other online alternatives fall short, Sorted Delegates steps up to the plate. 
+
+Additionally, I couldn't find any online implementations of sorted/ordered delegates that didn't involve costly techniques like using attributes and reflection. That's why now having Sorted Delegates available online is great. It provides a simple and direct solution without the need for convoluted workarounds, making it accessible to anyone who stumbles upon it.
 
 ## Features
 The repository offers the following delegate types:
@@ -22,7 +21,9 @@ The repository does not provide a specific `Predicate` type, as it can be implem
 ## Pros
 - It is not dependent on Unity, can be used in regular C# projects.
 - Prevents chaining delegates and callbacks.
+- Does not bloat your project, it lives on its own asmdef.
 - It is open source.
+- Fun to use.
 
 ## Cons
 - This approach may and likely will lead to bad code design.
