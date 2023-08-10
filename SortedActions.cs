@@ -13,6 +13,10 @@ namespace SametHope.SortedDelegates
             _listeners.Add(new KeyValuePair<Action, int>(listener, callPriority));
             IsOrdered = false;
         }
+        public void RemoveListener(Action listener)
+        {
+            _listeners.RemoveAll(kvp => kvp.Key.Equals(listener));
+        }
         public void RemoveListener(Action listener, int callPriority = 0)
         {
             _listeners.RemoveAll(kvp => kvp.Key.Equals(listener) && kvp.Value == callPriority);
@@ -57,6 +61,10 @@ namespace SametHope.SortedDelegates
             _listeners.Add(new KeyValuePair<Action<T>, int>(listener, callPriority));
             IsOrdered = false;
         }
+        public void RemoveListener(Action<T> listener)
+        {
+            _listeners.RemoveAll(kvp => kvp.Key.Equals(listener));
+        }
         public void RemoveListener(Action<T> listener, int callPriority = 0)
         {
             _listeners.RemoveAll(kvp => kvp.Key.Equals(listener) && kvp.Value == callPriority);
@@ -100,6 +108,10 @@ namespace SametHope.SortedDelegates
         {
             _listeners.Add(new KeyValuePair<Action<T1, T2>, int>(listener, callPriority));
             IsOrdered = false;
+        }
+        public void RemoveListener(Action<T1, T2> listener)
+        {
+            _listeners.RemoveAll(kvp => kvp.Key.Equals(listener));
         }
         public void RemoveListener(Action<T1, T2> listener, int callPriority = 0)
         {

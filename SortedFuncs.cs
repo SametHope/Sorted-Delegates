@@ -13,6 +13,10 @@ namespace SametHope.SortedDelegates
             _listeners.Add(new KeyValuePair<Func<TResult>, int>(listener, callPriority));
             IsOrdered = false;
         }
+        public void RemoveListener(Func<TResult> listener)
+        {
+            _listeners.RemoveAll(kvp => kvp.Key.Equals(listener));
+        }
         public void RemoveListener(Func<TResult> listener, int callPriority = 0)
         {
             _listeners.RemoveAll(kvp => kvp.Key.Equals(listener) && kvp.Value == callPriority);
@@ -60,6 +64,10 @@ namespace SametHope.SortedDelegates
             _listeners.Add(new KeyValuePair<Func<T1, TResult>, int>(listener, callPriority));
             IsOrdered = false;
         }
+        public void RemoveListener(Func<T1, TResult> listener)
+        {
+            _listeners.RemoveAll(kvp => kvp.Key.Equals(listener));
+        }
         public void RemoveListener(Func<T1, TResult> listener, int callPriority = 0)
         {
             _listeners.RemoveAll(kvp => kvp.Key.Equals(listener) && kvp.Value == callPriority);
@@ -106,6 +114,10 @@ namespace SametHope.SortedDelegates
         {
             _listeners.Add(new KeyValuePair<Func<T1, T2, TResult>, int>(listener, callPriority));
             IsOrdered = false;
+        }
+        public void RemoveListener(Func<T1, T2, TResult> listener)
+        {
+            _listeners.RemoveAll(kvp => kvp.Key.Equals(listener));
         }
         public void RemoveListener(Func<T1, T2, TResult> listener, int callPriority = 0)
         {
