@@ -6,6 +6,7 @@ namespace SametHope.SortedDelegates
 {
     public class SortedAction
     {
+        public List<KeyValuePair<Action, int>> Listeners => _listeners;
         private List<KeyValuePair<Action, int>> _listeners = new List<KeyValuePair<Action, int>>();
         public bool IsSorted { get; private set; } = true;
         public void AddListener(Action listener, int callPriority = 0)
@@ -55,6 +56,7 @@ namespace SametHope.SortedDelegates
 
     public class SortedAction<T>
     {
+        public List<KeyValuePair<Action<T>, int>> Listeners => _listeners;
         private List<KeyValuePair<Action<T>, int>> _listeners = new List<KeyValuePair<Action<T>, int>>();
         public bool IsSorted { get; private set; } = true;
         public void AddListener(Action<T> listener, int callPriority = 0)
@@ -104,6 +106,7 @@ namespace SametHope.SortedDelegates
 
     public class SortedAction<T1, T2>
     {
+        public List<KeyValuePair<Action<T1, T2>, int>> Listeners => _listeners;
         private List<KeyValuePair<Action<T1, T2>, int>> _listeners = new List<KeyValuePair<Action<T1, T2>, int>>();
         public bool IsSorted { get; private set; } = true;
         public void AddListener(Action<T1, T2> listener, int callPriority = 0)

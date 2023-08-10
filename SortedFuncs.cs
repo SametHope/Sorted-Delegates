@@ -6,6 +6,7 @@ namespace SametHope.SortedDelegates
 {
     public class SortedFunc<TResult>
     {
+        public List<KeyValuePair<Func<TResult>, int>> Listeners => _listeners;
         private List<KeyValuePair<Func<TResult>, int>> _listeners = new List<KeyValuePair<Func<TResult>, int>>();
         public bool IsSorted { get; private set; } = true;
         public void AddListener(Func<TResult> listener, int callPriority = 0)
@@ -58,6 +59,7 @@ namespace SametHope.SortedDelegates
 
     public class SortedFunc<T1, TResult>
     {
+        public List<KeyValuePair<Func<T1, TResult>, int>> Listeners => _listeners;
         private List<KeyValuePair<Func<T1, TResult>, int>> _listeners = new List<KeyValuePair<Func<T1, TResult>, int>>();
         public bool IsSorted { get; private set; } = true;
         public void AddListener(Func<T1, TResult> listener, int callPriority = 0)
@@ -110,6 +112,7 @@ namespace SametHope.SortedDelegates
 
     public class SortedFunc<T1, T2, TResult>
     {
+        public List<KeyValuePair<Func<T1, T2, TResult>, int>> Listeners => _listeners;
         private List<KeyValuePair<Func<T1, T2, TResult>, int>> _listeners = new List<KeyValuePair<Func<T1, T2, TResult>, int>>();
         public bool IsSorted { get; private set; } = true;
         public void AddListener(Func<T1, T2, TResult> listener, int callPriority = 0)
