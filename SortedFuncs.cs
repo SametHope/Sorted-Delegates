@@ -37,6 +37,18 @@ namespace SametHope.SortedDelegates
         {
             _listeners.Clear();
         }
+
+        public static SortedFunc<TResult> operator +(SortedFunc<TResult> left, Func<TResult> right)
+        {
+            left.AddListener(right);
+            return left;
+        }
+
+        public static SortedFunc<TResult> operator -(SortedFunc<TResult> left, Func<TResult> right)
+        {
+            left.RemoveListener(right);
+            return left;
+        }
     }
 
     public class SortedFunc<T1, TResult>
@@ -72,6 +84,18 @@ namespace SametHope.SortedDelegates
         {
             _listeners.Clear();
         }
+
+        public static SortedFunc<T1, TResult> operator +(SortedFunc<T1, TResult> left, Func<T1, TResult> right)
+        {
+            left.AddListener(right);
+            return left;
+        }
+
+        public static SortedFunc<T1, TResult> operator -(SortedFunc<T1, TResult> left, Func<T1, TResult> right)
+        {
+            left.RemoveListener(right);
+            return left;
+        }
     }
 
     public class SortedFunc<T1, T2, TResult>
@@ -106,6 +130,18 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+
+        public static SortedFunc<T1, T2, TResult> operator +(SortedFunc<T1, T2, TResult> left, Func<T1, T2, TResult> right)
+        {
+            left.AddListener(right);
+            return left;
+        }
+
+        public static SortedFunc<T1, T2, TResult> operator -(SortedFunc<T1, T2, TResult> left, Func<T1, T2, TResult> right)
+        {
+            left.RemoveListener(right);
+            return left;
         }
     }
 }

@@ -34,6 +34,18 @@ namespace SametHope.SortedDelegates
         {
             _listeners.Clear();
         }
+
+        public static SortedAction operator +(SortedAction left, Action right)
+        {
+            left.AddListener(right);
+            return left;
+        }
+
+        public static SortedAction operator -(SortedAction left, Action right)
+        {
+            left.RemoveListener(right);
+            return left;
+        }
     }
 
     public class SortedAction<T>
@@ -66,6 +78,18 @@ namespace SametHope.SortedDelegates
         {
             _listeners.Clear();
         }
+
+        public static SortedAction<T> operator +(SortedAction<T> left, Action<T> right)
+        {
+            left.AddListener(right);
+            return left;
+        }
+
+        public static SortedAction<T> operator -(SortedAction<T> left, Action<T> right)
+        {
+            left.RemoveListener(right);
+            return left;
+        }
     }
 
     public class SortedAction<T1, T2>
@@ -97,6 +121,18 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+
+        public static SortedAction<T1, T2> operator +(SortedAction<T1, T2> left, Action<T1, T2> right)
+        {
+            left.AddListener(right);
+            return left;
+        }
+
+        public static SortedAction<T1, T2> operator -(SortedAction<T1, T2> left, Action<T1, T2> right)
+        {
+            left.RemoveListener(right);
+            return left;
         }
     }
 }
