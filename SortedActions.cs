@@ -7,11 +7,11 @@ namespace SametHope.SortedDelegates
     public class SortedAction
     {
         private List<KeyValuePair<Action, int>> _listeners = new List<KeyValuePair<Action, int>>();
-        public bool IsOrdered { get; private set; } = true;
+        public bool IsSorted { get; private set; } = true;
         public void AddListener(Action listener, int callPriority = 0)
         {
             _listeners.Add(new KeyValuePair<Action, int>(listener, callPriority));
-            IsOrdered = false;
+            IsSorted = false;
         }
         public void RemoveListener(Action listener)
         {
@@ -23,11 +23,7 @@ namespace SametHope.SortedDelegates
         }
         public void Invoke()
         {
-            if (!IsOrdered)
-            {
-                _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
-                IsOrdered = true;
-            }
+            if (!IsSorted) Sort();
 
             for (int i = 0; i < _listeners.Count; i++)
             {
@@ -37,6 +33,11 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+        public void Sort()
+        {
+            _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
+            IsSorted = true;
         }
 
         public static SortedAction operator +(SortedAction left, Action right)
@@ -55,11 +56,11 @@ namespace SametHope.SortedDelegates
     public class SortedAction<T>
     {
         private List<KeyValuePair<Action<T>, int>> _listeners = new List<KeyValuePair<Action<T>, int>>();
-        public bool IsOrdered { get; private set; } = true;
+        public bool IsSorted { get; private set; } = true;
         public void AddListener(Action<T> listener, int callPriority = 0)
         {
             _listeners.Add(new KeyValuePair<Action<T>, int>(listener, callPriority));
-            IsOrdered = false;
+            IsSorted = false;
         }
         public void RemoveListener(Action<T> listener)
         {
@@ -71,11 +72,7 @@ namespace SametHope.SortedDelegates
         }
         public void Invoke(T param)
         {
-            if (!IsOrdered)
-            {
-                _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
-                IsOrdered = true;
-            }
+            if (!IsSorted) Sort();
 
             for (int i = 0; i < _listeners.Count; i++)
             {
@@ -85,6 +82,11 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+        public void Sort()
+        {
+            _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
+            IsSorted = true;
         }
 
         public static SortedAction<T> operator +(SortedAction<T> left, Action<T> right)
@@ -103,11 +105,11 @@ namespace SametHope.SortedDelegates
     public class SortedAction<T1, T2>
     {
         private List<KeyValuePair<Action<T1, T2>, int>> _listeners = new List<KeyValuePair<Action<T1, T2>, int>>();
-        public bool IsOrdered { get; private set; } = true;
+        public bool IsSorted { get; private set; } = true;
         public void AddListener(Action<T1, T2> listener, int callPriority = 0)
         {
             _listeners.Add(new KeyValuePair<Action<T1, T2>, int>(listener, callPriority));
-            IsOrdered = false;
+            IsSorted = false;
         }
         public void RemoveListener(Action<T1, T2> listener)
         {
@@ -119,11 +121,7 @@ namespace SametHope.SortedDelegates
         }
         public void Invoke(T1 param1, T2 param2)
         {
-            if (!IsOrdered)
-            {
-                _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
-                IsOrdered = true;
-            }
+            if (!IsSorted) Sort();
 
             for (int i = 0; i < _listeners.Count; i++)
             {
@@ -133,6 +131,11 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+        public void Sort()
+        {
+            _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
+            IsSorted = true;
         }
 
         public static SortedAction<T1, T2> operator +(SortedAction<T1, T2> left, Action<T1, T2> right)

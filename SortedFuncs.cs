@@ -7,11 +7,11 @@ namespace SametHope.SortedDelegates
     public class SortedFunc<TResult>
     {
         private List<KeyValuePair<Func<TResult>, int>> _listeners = new List<KeyValuePair<Func<TResult>, int>>();
-        public bool IsOrdered { get; private set; } = true;
+        public bool IsSorted { get; private set; } = true;
         public void AddListener(Func<TResult> listener, int callPriority = 0)
         {
             _listeners.Add(new KeyValuePair<Func<TResult>, int>(listener, callPriority));
-            IsOrdered = false;
+            IsSorted = false;
         }
         public void RemoveListener(Func<TResult> listener)
         {
@@ -23,11 +23,7 @@ namespace SametHope.SortedDelegates
         }
         public TResult Invoke()
         {
-            if (!IsOrdered)
-            {
-                _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
-                IsOrdered = true;
-            }
+            if (!IsSorted) Sort();
 
             TResult temp = default;
             for (int i = 0; i < _listeners.Count; i++)
@@ -40,6 +36,11 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+        public void Sort()
+        {
+            _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
+            IsSorted = true;
         }
 
         public static SortedFunc<TResult> operator +(SortedFunc<TResult> left, Func<TResult> right)
@@ -58,11 +59,11 @@ namespace SametHope.SortedDelegates
     public class SortedFunc<T1, TResult>
     {
         private List<KeyValuePair<Func<T1, TResult>, int>> _listeners = new List<KeyValuePair<Func<T1, TResult>, int>>();
-        public bool IsOrdered { get; private set; } = true;
+        public bool IsSorted { get; private set; } = true;
         public void AddListener(Func<T1, TResult> listener, int callPriority = 0)
         {
             _listeners.Add(new KeyValuePair<Func<T1, TResult>, int>(listener, callPriority));
-            IsOrdered = false;
+            IsSorted = false;
         }
         public void RemoveListener(Func<T1, TResult> listener)
         {
@@ -74,11 +75,7 @@ namespace SametHope.SortedDelegates
         }
         public TResult Invoke(T1 param)
         {
-            if (!IsOrdered)
-            {
-                _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
-                IsOrdered = true;
-            }
+            if (!IsSorted) Sort();
 
             TResult temp = default;
             for (int i = 0; i < _listeners.Count; i++)
@@ -91,6 +88,11 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+        public void Sort()
+        {
+            _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
+            IsSorted = true;
         }
 
         public static SortedFunc<T1, TResult> operator +(SortedFunc<T1, TResult> left, Func<T1, TResult> right)
@@ -109,11 +111,11 @@ namespace SametHope.SortedDelegates
     public class SortedFunc<T1, T2, TResult>
     {
         private List<KeyValuePair<Func<T1, T2, TResult>, int>> _listeners = new List<KeyValuePair<Func<T1, T2, TResult>, int>>();
-        public bool IsOrdered { get; private set; } = true;
+        public bool IsSorted { get; private set; } = true;
         public void AddListener(Func<T1, T2, TResult> listener, int callPriority = 0)
         {
             _listeners.Add(new KeyValuePair<Func<T1, T2, TResult>, int>(listener, callPriority));
-            IsOrdered = false;
+            IsSorted = false;
         }
         public void RemoveListener(Func<T1, T2, TResult> listener)
         {
@@ -125,11 +127,7 @@ namespace SametHope.SortedDelegates
         }
         public TResult Invoke(T1 param1, T2 param2)
         {
-            if (!IsOrdered)
-            {
-                _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
-                IsOrdered = true;
-            }
+            if (!IsSorted) Sort();
 
             TResult temp = default;
             for (int i = 0; i < _listeners.Count; i++)
@@ -142,6 +140,11 @@ namespace SametHope.SortedDelegates
         public void Clear()
         {
             _listeners.Clear();
+        }
+        public void Sort()
+        {
+            _listeners = _listeners.OrderBy(kvp => kvp.Value).ToList();
+            IsSorted = true;
         }
 
         public static SortedFunc<T1, T2, TResult> operator +(SortedFunc<T1, T2, TResult> left, Func<T1, T2, TResult> right)
