@@ -1,5 +1,5 @@
 # Sorted Delegates
-Sorted Delegates is a helpful tool that empowers you to manage delegates and callbacks with precision, unlike the default behavior that can sometimes be as reliable as a spinning roulette wheel. We all know that relying on a specific order of execution is generally discouraged in code design, but hey, life has its unpredictable moments. So, when you find yourself in a situation where you need that order to be just right and other online alternatives fall short, Sorted Delegates steps up to the plate. 
+Sorted Delegates is a helpful tool that allows you to manage delegates and callbacks with precision unlike the default behavior. Relying on a specific order of execution is generally discouraged but there are times it may come to use. 
 
 Additionally, I couldn't find any online implementations of sorted/ordered delegates that didn't involve costly techniques like using attributes and reflection. That's why now having Sorted Delegates available online is great. It provides a simple and direct solution without the need for convoluted workarounds, making it accessible to anyone who stumbles upon it.
 
@@ -21,13 +21,13 @@ The repository does not provide a specific `Predicate` type, as it can be implem
 ## Pros
 - It is not dependent on Unity, can be used in regular C# projects.
 - Prevents chaining delegates and callbacks.
-- Does not bloat your project, it lives on its own asmdef.
+- Does not bloat your project, it lives on its own assembly definition.
 - It is open source.
 - Fun to use.
 
 ## Cons
 - This approach may and likely will lead to bad code design.
-- Performance is generally lower than regular delegates. However, with higher listener counts, it tends to catch up and can even surpass regular delegates for some reason.
+- Performance is generally lower than regular delegates. However, with higher listener counts, it tends to catch up and can even surpass regular delegates for some reason (needs more testing, it is probably JIT compiler messing with my tests).
 
 ## Usage
 To use the Sorted Delegates, follow these steps:
